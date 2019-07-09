@@ -119,6 +119,7 @@ while True:
         pen.clear()
         pen.write(f"Player A: {score_a} | Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
         winsound.PlaySound("arcade_sound.wav", winsound.SND_ASYNC)
+
     # Paddle and ball collision
 
     if (ball.xcor() > 340 and ball.xcor() < 350) and (
