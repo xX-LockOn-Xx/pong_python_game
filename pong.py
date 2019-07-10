@@ -34,13 +34,13 @@ paddle_b.goto(350, 0)
 
 # Ball
 ball = turtle.Turtle()
-ball.speed(0)
+ball.speed(10)
 ball.shape("square")
 # ball.color("black")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.2
+ball.dx = -0.2
 ball.dy = -0.2
 
 # Pen
@@ -56,25 +56,25 @@ pen.write("Player A: 0 | Player B: 0", align="center", font=("Courier", 24, "nor
 # Function
 def paddle_a_up():
     y = paddle_a.ycor()
-    y += 20
+    y += 75
     paddle_a.sety(y)
 
 
 def paddle_a_down():
     y = paddle_a.ycor()
-    y -= 20
+    y -= 75
     paddle_a.sety(y)
 
 
 def paddle_b_up():
     y = paddle_b.ycor()
-    y += 20
+    y += 75
     paddle_b.sety(y)
 
 
 def paddle_b_down():
     y = paddle_b.ycor()
-    y -= 20
+    y -= 75
     paddle_b.sety(y)
 
 
@@ -105,20 +105,44 @@ while True:
         winsound.PlaySound("pong_sound.wav", winsound.SND_ASYNC)
 
     if ball.xcor() > 390:
-        ball.goto(0, 0)
+        ball.goto(0,0)
         ball.dx *= -1
         score_a += 1
         pen.clear()
         pen.write(f"Player A: {score_a} | Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
         winsound.PlaySound("arcade_sound.wav", winsound.SND_ASYNC)
 
+        if score_a and score_b > 2:
+            pen.pencolor('red')
+            wn.bgcolor("white")
+            paddle_a.color("black")
+            paddle_b.color("black")
+            ball.color("black")
+
+
+        #if score_a or score_b > 5:
+         #   ball.dx = 0.2 + 0.3
+          #  ball.dy = -0.2 + 0.3
+
     if ball.xcor() < -390:
-        ball.goto(0, 0)
+        ball.goto(0,0)
         ball.dx *= -1
         score_b += 1
         pen.clear()
+
         pen.write(f"Player A: {score_a} | Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
         winsound.PlaySound("arcade_sound.wav", winsound.SND_ASYNC)
+
+        if score_a and score_b > 2:
+            pen.pencolor('red')
+            wn.bgcolor("white")
+            paddle_a.color("black")
+            paddle_b.color("black")
+            ball.color("black")
+
+
+
+
 
     # Paddle and ball collision
 
